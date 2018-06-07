@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script>
+        // In this assignment, complete the function magic_multiply and ensure it passes all the test inputs and matches their 
+        // results. Modify magic_multiply until all the tests pass. Do not create a new magic_multiply for each test!
+
+        function magic_multiply(x, y){
+            if (y.constructor === String){
+                return "Error: Can not multiply by string";
+            }
+            if (x === 0 && y == 0){
+                return "All inputs 0";
+            }
+            if (x.constructor === Array){
+                for(var i = 0; i < x.length; i++){
+                    x[i] = x[i] * y;
+                }
+                return x;
+            }
+            if (x.constructor === String){
+                var z = "";
+                for(var i = 1; i < y+1; i++){
+                    z = z + x;
+                }
+                return z;
+            }
+            x = x * y;
+            return x;
+        }
+
+        let test1 = magic_multiply(5, 2);
+        console.log(test1);
+        // => 10
+
+        let test2 = magic_multiply(0, 0);
+        console.log(test2);
+        // => "All inputs 0"
+
+        let test3 = magic_multiply([1, 2, 3], 2);
+        console.log(test3);
+        // => [2, 4, 6]
+
+        let test4 = magic_multiply(7, "three");
+        console.log(test4);
+        // => "Error: Can not multiply by string"
+
+        let test5 = magic_multiply("Brendo", 4);
+        console.log(test5);
+        // => "BrendoBrendoBrendoBrendo"
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
