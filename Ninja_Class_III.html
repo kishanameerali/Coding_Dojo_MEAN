@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script>
+        // Part I
+        // Recreate the base Ninja class from scratch using ES6 classes. Your Ninja needs the following public attributes 
+        // (do not worry about private variables for this assignment):
+
+        // name
+        // health
+        // speed
+        // strength
+        // Speed and strength should be 3 by default. Health should be 100 by default.
+
+        // The Ninja class should have the following methods:
+
+        // sayName() - This should log that Ninja's name to the console.
+        // showStats() - This should show the Ninja's name, strength, speed, and health.
+        // drinkSake() - This should add +10 health to the Ninja
+
+        class Ninja{
+            constructor(name){
+                this.name = name;
+                this.health = 100;
+                this.speed = 3;
+                this.strength = 3;
+            }
+
+            sayName(){
+                console.log(`My name is ${this.name}`);
+            }
+
+            showStats(){
+                console.log(`Name: ${this.name}, Health: ${this.health}, Speed: ${this.speed}, Strength: ${this.strength}`);
+            }
+
+            drinkSake(){
+                this.health += 10;
+                return this;
+            }
+        }
+
+        class Sensei extends Ninja{
+            constructor(name){
+                super(name);
+                this.health = 200;
+                this.speed = 10;
+                this.strength = 10;
+                this.wisdom = 10;
+            }
+
+            speakWisdom(){
+                super.drinkSake();
+                console.log("Better to be pissed off then pissed on");
+            }
+
+        }
+
+        const ninja1 = new Ninja("Hayabusa");
+        ninja1.sayName();
+        ninja1.drinkSake();
+        ninja1.showStats();
+
+        const sensei1 = new Sensei("Splinter");
+        sensei1.speakWisdom();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

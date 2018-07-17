@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script>
+
+        // Complete the below challenges using Ninja from the previous assignment.
+
+        // .punch()
+        // Add a new method to Ninja called .punch(). This method will take another Ninja instance and subtract 5 Health 
+        // from the Ninja we passed in.
+
+        // .kick()
+        // Now add a method to your Ninja class called .kick(). Kick will subtract 15 Health for each point of Strength 
+        // the calling Ninja has, and like .punch() will take another Ninja instance
+
+        // Validations
+        // Update .punch() and .kick() so that they only accept Instances of Ninja. Hint: You will need to find a way 
+        // to check the constructor of an instance. 
+
+        function Ninja(name){
+            this.name = name;
+            this.health = 100;
+            var speed = 3;
+            var strength = 3;
+
+            this.showStats = function(){
+                console.log("Name: " + this.name + ", Health: " + this.health + ", Speed: " + speed + ", Strength: " + strength);
+            }
+
+            //Getter function to get strength
+
+            this.getStrength = function(){
+                return strength;
+            }
+        }
+
+        Ninja.prototype.sayName = function() {
+			console.log("My name is " + this.name);
+			return this;
+		}
+
+		Ninja.prototype.drinkSake = function(){
+			this.health += 10;
+			return this;
+		}
+
+        Ninja.prototype.punch = function(otherNinja){
+            if (otherNinja instanceof Ninja){
+                otherNinja.health -= 5;
+                console.log(otherNinja.name + " was punched by " + this.name + " and lost 5 health");
+                return this;
+            }
+            else{
+                console.log("You can't punch a non ninja");
+            }
+        }
+
+        Ninja.prototype.kick = function(otherNinja){
+            if (otherNinja instanceof Ninja){
+                kickForce = this.getStrength() * 15;
+                otherNinja.health -= kickForce;
+                console.log(otherNinja.name + " was kicked by " + this.name + " and lost " + kickForce +" health");
+                return this;
+            }
+            else{
+                console.log("You can't kick a non ninja");
+            }
+        }
+
+        let ninja1 = new Ninja("Hyabusa");
+        let ninja2 = new Ninja("Shinobi");
+        let student = "I'm a student";
+
+        ninja1.sayName();
+        ninja1.showStats();
+
+        ninja2.drinkSake();
+        ninja2.showStats();
+
+        ninja2.punch(ninja1);
+        ninja1.showStats();
+
+        ninja1.kick(ninja2);
+        ninja2.showStats();
+
+        ninja1.punch(student);
+        ninja2.kick(student);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
