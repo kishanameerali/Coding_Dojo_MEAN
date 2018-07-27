@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Order</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <h3>Order a new car</h3>
+    <form action="/neworder" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+
+        <p>Select Models You are Interested In:</p>
+        <label for="blue">Model S</label>
+        <input type="checkbox" id="Model S" name="model" value="models">
+    
+        <label for="green">Model X</label>
+        <input type="checkbox" id="Model X" name="model" value="modelx">
+   
+        <label for="red">Model 3</label>
+        <input type="checkbox" id="Model 3" name="model" value="model3">
+    
+        <label for="black">Model Y</label>
+        <input type="checkbox" id="Model Y" name="model" value="modely">
+
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html>

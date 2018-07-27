@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+       $(document).ready(function(){
+           $('button').click(function(){
+               $.get("https://api.github.com/users/kishanameerali", displayName)
+                    function displayName(data){
+                        $('#showName').html("<h3>" + data.name + "</h3>");
+                    }
+           })
+       });
+    </script>
+</head>
+<body>
+    <button type= "button">Display Name</button>
+    <div id= "showName">
+
+    </div>
+</body>
+</html>
