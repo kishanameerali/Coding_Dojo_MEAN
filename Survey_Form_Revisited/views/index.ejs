@@ -1,0 +1,74 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Survey Form</title>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+        $(document).ready(function(){
+            var socket = io();
+
+            $('form').submit(function(event){
+                event.preventDefault();
+                socket.emit('posting_form', {
+                    name: $('#name').val(),
+                    location: $('#location').val(),
+                    language: $('#language').val(),
+                    comment: $('#comment').val()
+                });
+            });
+            
+            socket.on('updated_message', function(data){
+                console.log(data.msg);
+                var info = JSON.stringify(data.msg);
+                $('#main1').prepend("You've emmitted the following information to the server: " + info);
+            });
+
+            socket.on('random_number', function(data){
+                var number = JSON.stringify(data.num);
+                $('#main2').append("Your lucky number emitted by the server is " + number);
+            })
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <div id= "main1">
+        </div>
+        <div id= "main2">
+        </div>
+        <form>
+            <div>
+                Your Name: <input id="name" type="text" name="name">
+            </div>
+            <div>
+                Dojo Location:
+                <select name="location" id="location">
+                    <option value="Seattle">Seattle</option>
+                    <option value="Los Angeles">Los Angeles</option>
+                    <option value="Dallas">Dallas</option>
+                    <option value="Washington DC">Washington DC</option>
+                </select>
+            </div>
+            <div>
+                Language of Choice
+                <select name="language" id="language">
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="C#">C#</option>
+                    <option value="Ruby">Ruby</option>
+                </select>
+            </div>
+            <div>
+                Comment (optional): <textarea name="comment" id="comment" rows="4" cols="50"></textarea>
+            </div>
+            <div>
+                <input id="submit" type="submit" value="Send">
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>
