@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+<body>
+    <h3>You can edit owl info below</h3>
+    <form action="/<%= owlInfo._id %>" method="post">
+        Owl Name: <input type="text" name="name" value="<%= owlInfo.name %>">
+        Owl Color: <input type="text" name="color" value="<%= owlInfo.color %>">
+        <input type="submit" value="Save Changes">
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Owl Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+<body>
+    <div>
+        <h1>All The Owls</h1>
+        <div id=table_div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Owl's Name</th>
+                        <th>Owl's Color</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (var owl in allOwls) { %>
+                        <tr>
+                            <td><a href="/owls/<%= allOwls[owl]._id %>"><%= allOwls[owl].name %></a></td> <!-- <a href="/owls/<%= allOwls[owl].ObjectId %>"></a> -->
+                            <td><%= allOwls[owl].color %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+           
+    </div>
+    <p>Click <a href="/new">Here</a> to add a new Owl</p> 
+    
+</body>
+</html>

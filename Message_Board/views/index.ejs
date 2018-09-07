@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Message Board</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+<body>
+    <div id="title">
+        <h1>The Dojo Message Board</h1>
+    </div>
+    <div>
+        <% JSON.stringify(messages) %>
+        <% if(messages.newMsg) { %>
+            <% for (let error of messages.newMsg) { %>
+                <h4><%= error %></h4>
+            <% } %>
+        <% } %>
+    </div>
+    <div id="formDiv">
+        <form action="/createmsg" method="post">
+            <div id="formDiv">
+                <label for="name">Name:</label>
+            </div>
+            <div id="formDiv">
+                <input type="text" name="name">
+            </div>
+            <div id="formDiv">
+                <label for="content">Message:</label>
+            </div>
+            <div id="formDiv">
+                <textarea name="content" id="" cols="80" rows="5"></textarea>
+            </div>
+            <div id="formDiv">
+                <input type="submit" value="Post Message">
+            </div>
+        </form>
+    </div>
+    <% for (var message of allMessages) { %>
+        <div id="msgDiv">
+            <h3>Name: <%= message.name %></h3>
+            <h3>Message: <%= message.content %></h3>
+            <div>
+                <% JSON.stringify(messages) %>
+                <% if(messages.newComment) { %>
+                    <% for (let error of messages.newComment) { %>
+                        <h4><%= error %></h4>
+                    <% } %>
+                <% } %>
+            </div>
+            <div id="formDiv">
+                <% for (var comm of message.comments) { %>
+                    <p>Name: <%= comm.name %></p>
+                    <p>Comment: <%= comm.content %></p>
+                <% } %>
+                <form action="/createcomm" method="post">
+                    <input type="hidden" name="id" value="<%= message._id %>">
+                    <div id="formDiv">
+                        <label for="name">Name:</label>
+                    </div>
+                    <div id="formDiv">
+                        <input type="text" name="name">
+                    </div>
+                    <div id="formDiv">
+                        <label for="content">Comment:</label>
+                    </div>
+                    <div id="formDiv">
+                        <textarea name="content" id="" cols="80" rows="5"></textarea>
+                    </div>
+                    <div id="formDiv">
+                        <input type="submit" value="Post Comment">
+                    </div>
+                </form>
+            </div>
+        </div>
+    <% } %>
+</body>
+</html>

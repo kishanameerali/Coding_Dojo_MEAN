@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Add Owl</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+<body>
+    <% JSON.stringify(messages) %>
+    <% if(messages.newOwl){ %>
+        <% for(var msg of messages.newOwl) { %>
+            <% if(msg[6] === "n"){ %>
+                <h4>Owl Name is Required</h4>
+            <% } %>
+        <% } %>
+    <% } %>
+    <div>
+        <h2>Add a New Owl</h2>
+        <div>
+            <form action="/owls/create" method="post">
+                <div>
+                        Owl Name: <input type="text" name="name"/>
+                </div>
+                <div>
+                    <select name="color" id="color">
+                            <option value="black">black</option>
+                            <option value="white">white</option>
+                            <option value="grey">grey</option>
+                            <option value="brown">brown</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="submit" value="Add"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

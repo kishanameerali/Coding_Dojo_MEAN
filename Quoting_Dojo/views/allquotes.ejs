@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quoting Dojo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href=""static/style.css"" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div>
+        <h2>Here are the awesome quotes</h2>
+        <% for(let idx in allQuotes){ %>
+            <h3>"<%= allQuotes[idx].quote %>"</h3>
+            <p>- <%= allQuotes[idx].name %> at <%= allQuotes[idx].createdAt %></p>
+        <% } %>
+    </div>
+    <a href="/">Go Back</a>
+    
+</body>
+</html>

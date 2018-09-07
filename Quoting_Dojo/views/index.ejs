@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quoting Dojo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href=""static/style.css"" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div>
+        <h2>Welcome to Quoting Dojo</h2>
+        <% JSON.stringify(messages) %>
+        <% if(messages.registration) { %>
+            <% for(let message of messages.registration) { %>
+                <% if(message[6] === 'n'){ %>
+                    <h4>Name is Required</h4>
+                <% } else if(message[6] === 'q'){ %>
+                    <h4>Quote is Required</h4>
+                <% } %>
+            <% } %>
+        <% } %>
+        <form action="/quotes" method="post">
+            Your Name: <input id="name" type="text" name="name">
+            Your Quote: <textarea name="quote" rows="4" cols="50"></textarea>
+            <input id="submit" type="submit" value="Add my Quote!">
+        </form>
+        <a href="/allQuotes"><button>Skip to Quotes!</button></a>
+    </div>
+    
+</body>
+</html>
